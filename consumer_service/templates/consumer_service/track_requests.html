@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Service Requests</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'track_requests/style.css' %}">
+</head>
+<body>
+    <div class="table-container">
+        <h1>Track Your Service Requests</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Request Type</th>
+                    <th>Status</th>
+                    <th>Created At</th>
+                    <th>Resolved At</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for request in requests %}
+                <tr>
+                    <td>{{ request.request_type }}</td>
+                    <td class="{{ request.status }}">{{ request.status }}</td>
+                    <td>{{ request.created_at }}</td>
+                    <td>{{ request.resolved_at|default:"N/A" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, inital-sacle=1.0">
+        <title>Customer Dashboard</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'dashboard/style.css' %}">
+    </head>
+    <body>
+        <div class="dashboard-container">
+            <h1>Welcome, Customer!</h1>
+            <div class="button-container">
+                <a href="{% url 'create_request' %}" class="dashboard-btn">Create service request</a>
+                <a href="{% url 'track_requests' %}" class="dashboard-btn">Track requests</a>
+            </div>
+        </div>
+    </body>
+</html>

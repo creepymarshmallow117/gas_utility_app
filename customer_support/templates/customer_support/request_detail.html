@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Request Details</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'request_detail/style.css' %}">
+    </head>
+    <body>
+        <div class="request-details-container">
+            <h1>Request #{{ service_request.id }}</h1>
+            <div class="request-details">
+                <p><strong>Type:</strong> {{ service_request.request_type }}</p>
+                <p><strong>Details:</strong> {{ service_request.details }}</p>
+                <p><strong>Status:</strong> 
+                    <span class="status {{ service_request.status|lower }}">{{ service_request.get_status_display }}</span>
+                </p>
+                <p><strong>Created At:</strong> {{ service_request.created_at|date:"M d, Y H:i" }}</p>
+                <p><strong>Resolved At:</strong> 
+                    {{ service_request.resolved_at|default:"N/A" }}
+                </p>
+            </div>
+            <div class="action-buttons">
+                <a href="{% url 'update_request_status' service_request.id %}" class="update-btn">Update Status</a>
+                <a href="{% url 'customer_support_dashboard' %}" class="back-btn">Back to Dashboard</a>
+            </div>
+        </div>
+    </body>
+</html>
